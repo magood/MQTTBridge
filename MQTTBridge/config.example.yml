@@ -1,0 +1,10 @@
+admin_email: 'your@email.com'
+rethinkdb:
+    host: '127.0.0.1'
+    port: 28015
+    db: 'dbname'
+    msg_table: 'messages'
+mqtt:
+    host: '127.0.0.1'
+    username: 'someuser'
+    password: 'somepw'
