@@ -12,6 +12,9 @@
     <Name>MQTTBridge</Name>
     <RootNamespace>MQTTBridge</RootNamespace>
     <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
+    <LaunchProvider>Standard Python launcher</LaunchProvider>
+    <CommandLineArguments>listen</CommandLineArguments>
+    <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -27,6 +30,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="rethink_logger.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="testpublish.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
