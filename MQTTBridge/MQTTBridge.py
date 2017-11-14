@@ -10,13 +10,13 @@ def cli():
     pass
 
 def debug_message(client, userdata, msg):
-    print(msg.topic+" "+str(msg.payload))
+    click.echo("RECIEVED: topic {}, payload {}".format(msg.topic, str(msg.payload)))
 
 def log_message(client, userdata, msg):
-    print("Saving " + msg.topic+" "+str(msg.payload))
+    click.echo("Saving " + msg.topic+" "+str(msg.payload))
     global cfg
     result = rl.log(cfg, msg)
-    print("{} records inserted.".format(result['inserted']))
+    click.echo("{} records inserted.".format(result['inserted']))
 
 @cli.command('listen')
 def listen():
@@ -34,11 +34,9 @@ def log():
 
 #run this like: python MQTTBridge.py log
 if __name__ == '__main__':
-    click.echo("main code running")
-    global cfg
+    click.echo("MQTTBridge starting up...")
     with open("config.yml", 'r') as ymlfile:
         cfg = yaml.load(ymlfile)
     if cfg is None:
         raise RuntimeError("config.yml file not found or not valid")
-    click.echo("listening on {} as {}".format(cfg['mqtt']['host'], cfg['mqtt']['username'])) 
     cli()
