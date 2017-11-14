@@ -40,4 +40,5 @@ if __name__ == '__main__':
         cfg = yaml.load(ymlfile)
     if cfg is None:
         raise RuntimeError("config.yml file not found or not valid")
+    click.echo("listening on {} as {}".format(cfg['mqtt']['host'], cfg['mqtt']['username'])) 
     cli()
